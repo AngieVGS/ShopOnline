@@ -30,8 +30,7 @@ public class PanelPointsGraphic extends JFrame {
 
 	public PanelPointsGraphic(ArrayList<Purchase> purchase) {
 		setLayout(new BorderLayout());
-		setLocationRelativeTo(null);
-		setSize(700, 300);
+		setSize(700, 400);
 		setTitle("Plot Chart");
 		setIconImage(new ImageIcon(getClass().getResource(Constants.PLOT_CHART_ICON_PATH)).getImage());
 
