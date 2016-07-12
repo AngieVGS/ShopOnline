@@ -28,6 +28,7 @@ import views.PanelObjectShoppingCar;
 import views.PanelPointsGraphic;
 
 public class Controller implements ActionListener {
+
 	Shop shop;
 	MainWindow mainWindow;
 	DialogAdd dialogAdd;
@@ -49,7 +50,7 @@ public class Controller implements ActionListener {
 		dialogAdd = new DialogAdd(this, mainWindow);
 		shoppingCar = new DialogShoppingCar(this, mainWindow);
 		dialogLogin = new DialogLogin(this, mainWindow);
-		dialogPurchase = new DialogPurchase(this, mainWindow);		
+		dialogPurchase = new DialogPurchase(this, mainWindow);
 		saveAdmin();
 	}
 
@@ -138,18 +139,18 @@ public class Controller implements ActionListener {
 
 	}
 
-	private void showStatistics() {		
+	private void showStatistics() {
 		try {
 			ArrayList<Purchase> purchases = ManagerPersistence.purchases();
 			statistics = new DialogStatistics(purchases);
-			statistics.setSize(700,400);
+			statistics.setSize(700, 400);
 			statistics.setTitle("Statistics");
 			statistics.setVisible(true);
 			panelPointsGraphic = new PanelPointsGraphic(purchases);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}// colocal el parameetro
+		} // colocal el parameetro
 	}
 
 	private void saveAdmin() {
@@ -217,7 +218,7 @@ public class Controller implements ActionListener {
 		JOptionPane.showMessageDialog(mainWindow, "Purchase made");
 		shoppingCar.setVisible(false);
 		mainWindow.resetItemsOnCar();
-//		reloadPurchaseMaxPage("j1");
+		// reloadPurchaseMaxPage("j1");
 	}
 
 	private void addToCAr(int id, String user) {

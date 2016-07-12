@@ -48,19 +48,19 @@ public class Product {
 	public double getPrice() {
 		return price;
 	}
-	
-	public void increaseStock(){
+
+	public void increaseStock() {
 		quantumAvailable++;
 	}
-	
-	public void decreaseStock(){
+
+	public void decreaseStock() {
 		quantumAvailable--;
 	}
 
 	public String getImagePath() {
 		return imagePath;
 	}
-	
+
 	public Object[] getArrayContent() {
 		return new Object[] { getId(), getName(), getPrice() + "$", getQuantumAvailable(), getCategory(),
 				getPercentageOfProfit() + "%" };

@@ -38,7 +38,7 @@ public class Shop {
 
 	public static Product createProduct(String name, double price, String imagePath, int quantumAvailable,
 			Category category, double percentageOfProfit) {
-		return new Product( name, price, imagePath, quantumAvailable, category, percentageOfProfit);
+		return new Product(name, price, imagePath, quantumAvailable, category, percentageOfProfit);
 	}
 
 	public void addProduct(Product product) throws idRegistered {
@@ -48,8 +48,8 @@ public class Shop {
 			throw new idRegistered();
 		}
 	}
-	
-	public Product searchProductById(int id){
+
+	public Product searchProductById(int id) {
 		for (int i = 0; i < listProducts.size(); i++) {
 			if (listProducts.get(i).getId() == id) {
 				return listProducts.get(i);
@@ -135,7 +135,7 @@ public class Shop {
 	public void setListUsers(ArrayList<User> listUsers) {
 		this.listUsers = listUsers;
 	}
-	
+
 	public void setListProducts(ArrayList<Product> listProducts) {
 		this.listProducts = listProducts;
 	}
@@ -171,45 +171,23 @@ public class Shop {
 		return null;
 	}
 
-//	public Point getPointProductsForPage(int numberPageCurrent) {
-//		int initCount = ((numberPageCurrent - 1)
-//				* Integer.parseInt(ManagerPersistence.readProperty("numberDataForPage")));
-//		int finishCount = numberPageCurrent * Integer.parseInt(ManagerPersistence.readProperty("numberDataForPage"));
-//		if (finishCount > listProductsFilter.size()) {
-//			finishCount = listProductsFilter.size();
-//		}
-//		return new Point(initCount, finishCount);
-//	}
-
-//	public ArrayList<Product> readProductsFiltersForPage(int numberPageCurrent) {
-//		ArrayList<Product> listProductsResult = new ArrayList<>();
-//		Point point = getPointProductsForPage(numberPageCurrent);
-//		for (int i = (int) point.getX(); i < (int) point.getY(); i++) {
-//			listProductsResult.add(createProduct(listProducts.get(i).getId(), listProducts.get(i).getName(),
-//					listProducts.get(i).getPrice(), listProducts.get(i).getImagePath(),
-//					listProducts.get(i).getQuantumAvailable(), listProducts.get(i).getCategory(),
-//					listProducts.get(i).getPercentageOfProfit()));
-//		}
-//		return listProductsResult;
-//	}
-
 	public Administrator getAdministrator() {
 		return administrator;
 	}
-	
+
 	public ArrayList<User> getListUsers() {
 		return listUsers;
 	}
-	
+
 	public static User createUser(String name, String password) {
 		return new User(name, password);
 	}
 
-	public void registerUser(User user){
+	public void registerUser(User user) {
 		listUsers.add(user);
 	}
 
-	public int searchUserToGetIndex(String name){
+	public int searchUserToGetIndex(String name) {
 		int index = -1;
 		for (int i = 0; i < listUsers.size(); i++) {
 			if (listUsers.get(i).getName().equals(name)) {
@@ -218,8 +196,8 @@ public class Shop {
 		}
 		return index;
 	}
-	
-	public User searchUser(String name){
+
+	public User searchUser(String name) {
 		for (int i = 0; i < listUsers.size(); i++) {
 			if (listUsers.get(i).getName().equals(name)) {
 				return listUsers.get(i);
@@ -227,7 +205,7 @@ public class Shop {
 		}
 		return null;
 	}
-	
+
 	public void enableUser(User user) {
 		for (User user2 : listUsers) {
 			if (user2.getId() == user.getId()) {
@@ -262,16 +240,7 @@ public class Shop {
 		return num;
 	}
 
-	public ArrayList<Product> deleteRepeatedProducts(ArrayList<Purchase> purchases) {// retorna
-																						// lista
-																						// de
-																						// productos
-																						// y
-																						// cuantas
-																						// veces
-																						// se
-																						// han
-																						// vendido
+	public ArrayList<Product> deleteRepeatedProducts(ArrayList<Purchase> purchases) {
 		ArrayList<Product> selledProducts = new ArrayList<>();
 		ArrayList<Product> productsCopy = new ArrayList<>();
 		for (int i = 0; i < purchases.size(); i++) {
