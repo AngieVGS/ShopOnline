@@ -1,11 +1,10 @@
 package views;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import models.entity.Purchase;
 
@@ -46,13 +45,11 @@ public class PanelBarGraphic extends JPanel {
 		}
 	}
 	
-	public int calculateSalesPerHour(int day,int hour){// calcula las ventas de cada hora entra el dia y la hora
+	public int calculateSalesPerHour(int day,int hour){
 		int sales = 0;
-		
 		for (Purchase purchase: purch){			
-			if (day == 12 &&  hour == 11) {// cambiar los numeros quemados por datos del  purchase el 12 es el dia  CAMBIAR
+			if (day == LocalDateTime.now().getDayOfMonth() &&  hour == LocalDateTime.now().getHour()) {
 				sales++;
-				System.out.println("ja ja ja j xd");
 			}
 			System.out.println(""+sales);
 		}
