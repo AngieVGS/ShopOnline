@@ -31,12 +31,7 @@ public class PanelBarGraphic extends JPanel {
 		//-----------------------------dibujar puntos--------------------------------------------------------
 		try{
 		int partsOfEjeXInPixels = calculatePartsInPixels(1,24);//se hace la divicion para saber de a cuantos pixeles toca para usar entre objetos de x
-		int partsOfEjeYInPixels =0;
-			try {
-				partsOfEjeYInPixels = calculatePartsInPixels(0,NumberPurchasesToday());// numberpurchasesToday().. compras del dia
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+		int partsOfEjeYInPixels = calculatePartsInPixels(0,NumberPurchasesToday());// numberpurchasesToday().. compras del dia
 		int lastPositionx = 30;
 		int lastPositiony = getHeight()-30;
 		
@@ -44,7 +39,7 @@ public class PanelBarGraphic extends JPanel {
 			g.setColor(Color.blue);
 			g.drawLine(lastPositionx, lastPositiony,lastPositionx+partsOfEjeXInPixels,getHeight()-30-(calculateSalesPerHour((new GregorianCalendar().get(GregorianCalendar.DAY_OF_MONTH)),i)*partsOfEjeYInPixels));
 			lastPositionx += partsOfEjeXInPixels;
-			lastPositiony = getHeight()-30-(3*partsOfEjeYInPixels);
+			lastPositiony = (getHeight()-30)-(calculateSalesPerHour(new GregorianCalendar().get(GregorianCalendar.DAY_OF_MONTH), i)*partsOfEjeYInPixels);
 		}
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -53,18 +48,24 @@ public class PanelBarGraphic extends JPanel {
 	
 	public int calculateSalesPerHour(int day,int hour){// calcula las ventas de cada hora entra el dia y la hora
 		int sales = 0;
-		for (Purchase purchase: purch) {
-			if (purchase.getDate().DAY_OF_MONTH == day && purchase.getDate().HOUR_OF_DAY == hour) {
+		
+		for (Purchase purchase: purch){			
+			if (day == 11 &&  hour == 11) {// cambiar los numeros quemados por datos del  purchase
 				sales++;
+				System.out.println("ja ja ja j xd");
 			}
+			System.out.println(""+sales);
 		}
 		return sales;
 	}
 	
 	public int NumberPurchasesToday(){
 		ArrayList<Purchase> aux = new ArrayList<>();
+		
 		for (Purchase purchase: purch) {
-			if (purchase.getDate().DAY_OF_MONTH == (new GregorianCalendar().get(GregorianCalendar.DAY_OF_MONTH)) ) {
+			System.out.println("****"+purchase.getDate().DATE);
+			System.out.println((new GregorianCalendar().get(GregorianCalendar.DAY_OF_MONTH)));
+			if (11 == (new GregorianCalendar().get(GregorianCalendar.DAY_OF_MONTH)) ) {
 				aux.add(purchase);
 			}
 		}
@@ -80,13 +81,13 @@ public class PanelBarGraphic extends JPanel {
 		return 0;			
 	}
 		
-	public static void main(String[] args) {
-		JFrame frame = new JFrame("");
-		frame.setLayout(new BorderLayout());
-		PanelBarGraphic graphic = new PanelBarGraphic(null);		
-		frame.add(graphic,BorderLayout.CENTER);
-		frame.setSize(700, 400);
-		frame.setLocationRelativeTo(null);
-		frame.setVisible(true);
-	}	
+//	public static void main(String[] args) {
+//		JFrame frame = new JFrame("");
+//		frame.setLayout(new BorderLayout());
+//		PanelBarGraphic graphic = new PanelBarGraphic(null);		
+//		frame.add(graphic,BorderLayout.CENTER);
+//		frame.setSize(700, 400);
+//		frame.setLocationRelativeTo(null);
+//		frame.setVisible(true);
+//	}	
 }

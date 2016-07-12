@@ -12,7 +12,7 @@ public class Purchase {
 	public Purchase(Product product,int quanty) {
 	
 		this.product = product;
-		this.date = new GregorianCalendar(new GregorianCalendar().get(Calendar.YEAR), new GregorianCalendar().get(Calendar.MONTH),new GregorianCalendar().get(Calendar.DATE), new GregorianCalendar().get(Calendar.HOUR), new GregorianCalendar().get(Calendar.MINUTE));//edit to get the current date
+		this.date = new GregorianCalendar(new GregorianCalendar().YEAR, new GregorianCalendar().MONTH,new GregorianCalendar().DAY_OF_MONTH, new GregorianCalendar().HOUR, new GregorianCalendar().MINUTE);//edit to get the current date
 		this.quanty = quanty;
 	}
 	
