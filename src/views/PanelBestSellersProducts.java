@@ -1,12 +1,8 @@
 package views;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
-
 import javax.swing.JPanel;
-
 import models.entity.Product;
 import models.entity.Purchase;
 
@@ -16,6 +12,7 @@ public class PanelBestSellersProducts extends JPanel {
 	/**
 	 * diseñado para mostrar el top de productos mas vendidos
 	 */
+	@SuppressWarnings("unused")
 	private ArrayList<Purchase> purch;
 	
 	public PanelBestSellersProducts(ArrayList<Purchase> purchase) {

@@ -76,10 +76,7 @@ public class PanelPointsGraphic extends JFrame {
 		setVisible(true);
 	}
 
-//	private void add(Purchase purchase){
-//		purchases.add(purchase);
-//	}
-	
+	@SuppressWarnings("static-access")
 	private int calculatePurchasesPerMinute(int minute){
 		int purchasesOnThisMinute = 0;
 		for (Purchase purchase: purchases) {

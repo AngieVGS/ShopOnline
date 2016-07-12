@@ -34,7 +34,7 @@ public class PanelBarGraphic extends JPanel {
 		int lastPositionx = 30;
 		int lastPositiony = getHeight()-30;
 		
-		for (int i = 0; i < 24; i++) {// recorre las 24 horas del dia y va graficando linea por linea 
+		for (int i = 0; i < 24; i++) {
 			g.setColor(Color.blue);
 			g.drawLine(lastPositionx, lastPositiony,lastPositionx+partsOfEjeXInPixels,getHeight()-30-(calculateSalesPerHour((new GregorianCalendar().get(GregorianCalendar.DAY_OF_MONTH)),i)*partsOfEjeYInPixels));
 			lastPositionx += partsOfEjeXInPixels;
@@ -47,7 +47,7 @@ public class PanelBarGraphic extends JPanel {
 	
 	public int calculateSalesPerHour(int day,int hour){
 		int sales = 0;
-		for (Purchase purchase: purch){			
+		for (@SuppressWarnings("unused") Purchase purchase: purch){			
 			if (day == LocalDateTime.now().getDayOfMonth() &&  hour == LocalDateTime.now().getHour()) {
 				sales++;
 			}
@@ -60,16 +60,14 @@ public class PanelBarGraphic extends JPanel {
 		
 		ArrayList<Purchase> aux = new ArrayList<>();		
 		for (Purchase purchase: purch) {
-			System.out.println("****"+purchase.getDate().DATE);
-			System.out.println((new GregorianCalendar().get(GregorianCalendar.DAY_OF_MONTH)));
-			if (12 == (new GregorianCalendar().get(GregorianCalendar.DAY_OF_MONTH)) ) {// el 12 quemado es el dia  CAMBIAR
+			if (12 == (LocalDateTime.now().getDayOfMonth()) ) {
 				aux.add(purchase);
 			}
 		}
 		return aux.size();
 	}
 	
-	public int calculatePartsInPixels(int a,int parts){	//este metodo retorna el monto de pixeles que separan los puntos	
+	public int calculatePartsInPixels(int a,int parts){		
 		if (a==1) {
 			return (getWidth()-85)/parts;
 		}else if (a==0) {
@@ -77,14 +75,4 @@ public class PanelBarGraphic extends JPanel {
 		}
 		return 0;			
 	}
-		
-//	public static void main(String[] args) {
-//		JFrame frame = new JFrame("");
-//		frame.setLayout(new BorderLayout());
-//		PanelBarGraphic graphic = new PanelBarGraphic(null);		
-//		frame.add(graphic,BorderLayout.CENTER);
-//		frame.setSize(700, 400);
-//		frame.setLocationRelativeTo(null);
-//		frame.setVisible(true);
-//	}	
 }
