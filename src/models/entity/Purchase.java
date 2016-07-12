@@ -1,6 +1,6 @@
 package models.entity;
 
-import java.util.Calendar;
+import java.time.LocalDateTime;
 import java.util.GregorianCalendar;
 
 public class Purchase {
@@ -12,7 +12,7 @@ public class Purchase {
 	public Purchase(Product product,int quanty) {
 	
 		this.product = product;
-		this.date = new GregorianCalendar(new GregorianCalendar().YEAR, new GregorianCalendar().MONTH,new GregorianCalendar().DAY_OF_MONTH, new GregorianCalendar().HOUR, new GregorianCalendar().MINUTE);//edit to get the current date
+		this.date = new GregorianCalendar(LocalDateTime.now().getYear(),LocalDateTime.now().getMonthValue(), LocalDateTime.now().getDayOfMonth(), LocalDateTime.now().getHour(), LocalDateTime.now().getMinute());
 		this.quanty = quanty;
 	}
 	
@@ -28,7 +28,7 @@ public class Purchase {
 		return date;
 	}
 
-	@SuppressWarnings("deprecation")
+	@SuppressWarnings("static-access")
 	public String returnDate(){
 		return date.YEAR + "/" + date.MONTH+ "/" + date.DATE+"//" + date.HOUR + ":" + date.MINUTE;
 	}
