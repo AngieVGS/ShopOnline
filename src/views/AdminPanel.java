@@ -29,6 +29,7 @@ public class AdminPanel extends JPanel {
 	private DefaultTableModel model;
 	private JLabel title;
 	private JButton btnSatsistics;
+	private PanelTabla panelTabla;
 
 	public AdminPanel(Controller controller) {
 		setBackground(Color.decode(Constants.BACKGROUND_COLOR_MAIN));
@@ -127,7 +128,8 @@ public class AdminPanel extends JPanel {
 		scrol.getViewport().setBackground(Color.decode(Constants.BACKGROUND_COLOR_MAIN));
 		scrol.setBorder(BorderFactory.createLineBorder(Color.decode(Constants.BACKGROUND_COLOR_MAIN), 8));
 		scrol.setOpaque(false);
-		add(scrol, c);
+		panelTabla = new PanelTabla(controller);
+		add(panelTabla, c);
 
 	}
 
@@ -163,10 +165,23 @@ public class AdminPanel extends JPanel {
 		return Integer.parseInt((String) tableObj.getValueAt(tableObj.getSelectedRow(), 0));
 	}
 
-	public void revalidateTableWithSpecificItems(ArrayList<Product> products) {
-		deleteAllValuesofTheTable();
-		for (int i = 0; i < products.size(); i++) {
-			addProduct(products.get(i));
-		}
+	public void revalidateTableWithSpecificItems(ArrayList<Product> listProducts) {
+//		deleteAllValuesofTheTable();
+//		for (int i = 0; i < products.size(); i++) {
+//			addProduct(products.get(i));
+//		}
+		panelTabla.updateTable(listProducts);
+	}
+	
+	public int getNumberRowSelect() {
+		return panelTabla.getNumberRowSelect();
+	}
+
+	public Object[] getListValuesForFilter() {
+		return panelTabla.getListValuesForFilter();
+	}
+	
+	public void printTable() {
+		panelTabla.printTable();
 	}
 }

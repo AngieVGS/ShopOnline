@@ -4,10 +4,13 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.io.IOException;
 import java.util.ArrayList;
+
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
+
 import controller.Controller;
 import models.entity.Product;
 
@@ -37,7 +40,7 @@ public class MainWindow extends JFrame {
 		// *****************panel page****************************************************
 		panelPage = new JPanel();
 		add(panelPage, BorderLayout.PAGE_END);
-		setVisible(true);
+//		setVisible(true);
 	}
 
 	public void switchBetweenAdminAndUserView(boolean admin) {
@@ -112,5 +115,21 @@ public class MainWindow extends JFrame {
 
 	public void resetItemsOnCar() {
 		headerPanel.reset();
+	}
+	
+	public int getNumberRowSelect() {
+		return ((AdminPanel) mainPanel).getNumberRowSelect();
+	}
+
+	public void getMessageErrorPrice() {
+		JOptionPane.showMessageDialog(this, "The first price can not be higher than second", "Error Price Filter", JOptionPane.WARNING_MESSAGE);
+	}
+
+	public Object[] getListValuesForFilter() {
+		return ((AdminPanel) mainPanel).getListValuesForFilter();
+	}
+
+	public void printTable() {
+		((AdminPanel) mainPanel).printTable();
 	}
 }

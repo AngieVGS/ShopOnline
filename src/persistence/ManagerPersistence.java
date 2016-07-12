@@ -26,7 +26,7 @@ public class ManagerPersistence {
 	public static final String PATH_NAME_PRODUCTS = "src/data/products.json";
 	public static final String PATH_NAME_USERS = "src/data/users.json";
 	public static final String PATH_NAME_ADMIN = "src/data/admin.json";
-	private static final String PATH_NAME_PROPERTIES = "src/data/properties.json";
+	private static final String PATH_NAME_PROPERTIES = "src/data/config.properties";
 
 	public static void writeProperty(String key, String value) {
 		Properties properties = new Properties();

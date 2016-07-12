@@ -1,5 +1,6 @@
 package views;
 
+import java.awt.Color;
 import java.awt.Toolkit;
 
 public class Constants {
@@ -73,5 +74,10 @@ public class Constants {
 	public static final String PURCHASE_TEXT = "Purchase";
 	public static final int HEIGHT = 700;
 	public static final int WIDTH = 900;
+	
+	public static final Color COLOR_BLUE_GENERAL = Color.decode("#40658A");
+	public static final Color COLOR_GREEN_GENERAL = Color.decode("#5B7729");
+	public static final Color COLOR_DARK_BLUE_GENERAL = Color.decode("#32CD32");
+	public static final Color COLOR_BACKGROUND_SELECTION_TABLE = Color.decode("#32CD32");
 
 }

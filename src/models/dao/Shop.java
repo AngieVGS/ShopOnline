@@ -140,14 +140,20 @@ public class Shop {
 		this.listProducts = listProducts;
 	}
 
-	public ArrayList<Product> getListProductsForFilter(String name, double priceMin, double priceMax,
-			Category category) {
+	public ArrayList<Product> getListProductsForFilter(int id, String name, double priceMin, double priceMax, Category category) {
 		ArrayList<Product> listProductsResult = new ArrayList<>();
 		for (Product product : listProducts) {
-			if (product.getName().contains(name)
-					&& (product.getPrice() >= priceMin && product.getPrice() <= priceMax)) {
-				if (category.equals(Category.ALL) || product.getCategory().equals(category)) {
-					listProductsResult.add(product);
+			if (id > 0) {
+				if (product.getId() == id && product.getName().contains(name) && (product.getPrice() >= priceMin && product.getPrice() <= priceMax)) {
+					if (category.equals(Category.OTHER) || category.equals(Category.ALL) || product.getCategory().equals(category)) {
+						listProductsResult.add(product);
+					}
+				}
+			}else {
+				if (product.getName().contains(name) && (product.getPrice() >= priceMin && product.getPrice() <= priceMax)) {
+					if (category.equals(Category.OTHER) || category.equals(Category.ALL) || product.getCategory().equals(category)) {
+						listProductsResult.add(product);
+					}
 				}
 			}
 		}

@@ -3,14 +3,18 @@ package controller;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 
 import models.dao.Shop;
+import models.entity.Category;
 import models.entity.Product;
 import models.entity.Purchase;
 import models.entity.User;
@@ -27,7 +31,7 @@ import views.MainWindow;
 import views.PanelObjectShoppingCar;
 import views.PanelPointsGraphic;
 
-public class Controller implements ActionListener {
+public class Controller implements ActionListener, MouseListener {
 
 	Shop shop;
 	MainWindow mainWindow;
@@ -113,6 +117,7 @@ public class Controller implements ActionListener {
 		// filter();
 		// break;
 		case FILTER:
+			filter();
 			break;
 		case LOGIN:
 			login();
@@ -132,11 +137,31 @@ public class Controller implements ActionListener {
 		case SHOW_STATISTICS:
 			showStatistics();
 			break;
+		case BUTTON_PRINT:
+			printTable();
+			break;
 		default:
 			break;
 
 		}
-
+	}
+	
+	private void printTable() {
+		mainWindow.printTable();
+	}
+	
+	private void filter() {
+		try {
+			Object[] values = mainWindow.getListValuesForFilter();
+			if (String.valueOf(values[0]).equals("")) {
+				values[0] = "-1";
+			}
+			shop.setListProductsFilter(shop.getListProductsForFilter(Integer.parseInt((String)values[0]), (String)values[1], (double)values[2], (double)values[3], (Category)values[4]));
+		} catch (Exception e) {
+			mainWindow.getMessageErrorPrice();
+			return;
+		}
+		mainWindow.revalidateTableWithSpecificItems(shop.getListProductsFilter());
 	}
 
 	private void showStatistics() {
@@ -148,7 +173,6 @@ public class Controller implements ActionListener {
 			statistics.setVisible(true);
 			panelPointsGraphic = new PanelPointsGraphic(purchases);
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} // colocal el parameetro
 	}
@@ -281,8 +305,10 @@ public class Controller implements ActionListener {
 	}
 
 	private void editProduct() {
-		addOrCreate = false;
-		dialogAdd.setVisible(true);
+		if(JOptionPane.showConfirmDialog(mainWindow, "Really want to EDIT this product?", "Remove Product", JOptionPane.WARNING_MESSAGE) == 0){
+			addOrCreate = false;
+			dialogAdd.setVisible(true);
+		}
 	}
 
 	private void deleteProductFromAdminPerspective() {
@@ -404,6 +430,85 @@ public class Controller implements ActionListener {
 		PAGE_PURCHASE--;
 		reloadListOfPurchase(user);
 		dialogPurchase.revalidate();
+	}
+	
+	private void viewProduct(int id) {
+		if(JOptionPane.showConfirmDialog(mainWindow, "Really want to PREVIEW this product?", "Remove Product", JOptionPane.WARNING_MESSAGE) == 0){
+			DeatailsPanel details = new DeatailsPanel(shop.getListProducts().get(id));
+			details.setVisible(true);
+		}
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	private void actionButtonRemoveProduct(int id) {
+		if(JOptionPane.showConfirmDialog(mainWindow, "Really want to REMOVE this product?", "Remove Product", JOptionPane.WARNING_MESSAGE) == 0){
+			try {
+				shop.deleteProduct(id);
+			} catch (IdProductInexistExeption e) {
+				JOptionPane.showMessageDialog(mainWindow, "The Product Not Exist");
+			}
+			shop.setListProductsFilter(shop.getListProducts());
+//			ManagerPersistence.writeProductsInJson(shop.getListProducts());
+			mainWindow.revalidateTableWithSpecificItems(shop.getListProductsFilter());
+			try {
+				ManagerPersistence.writeProducts(shop.getListProducts());
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+//			numberMaxPages(shop.getListProductsFilter());
+//			windowAdministrator.setFormatPages(MAX_NUMBER_PAGES);
+		}
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		Object objectSelectedInTable = ((JTable)e.getComponent()).getModel().getValueAt(0, ((JTable)e.getComponent()).getSelectedColumn());
+		
+		if (objectSelectedInTable.getClass().equals(JButton.class)) {
+			int columnCount = ((JTable)e.getComponent()).columnAtPoint(e.getPoint());
+			int id = 0;
+			for (int i = 0; i < columnCount; i++) {
+				if(((JTable)e.getComponent()).getModel().getColumnName(i).equals("ID")){
+					id = (Integer)((JTable)e.getComponent()).getModel().getValueAt(mainWindow.getNumberRowSelect(), i);
+				}
+			}
+			switch (ActionEnum.valueOf(((JButton)objectSelectedInTable).getActionCommand())) {
+			case BUTTON_REMOVE_PRODUCT:
+				actionButtonRemoveProduct(id);
+				break;
+			case BUTTON_EDIT_PRODUCT:
+				editProduct();
+				break;
+			case BUTTON_PREVIEW_PRODUCT:
+				viewProduct(id);
+				break;
+			default:
+				break;
+			}
+		}
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
