@@ -13,14 +13,14 @@ import javax.swing.JScrollPane;
 import controller.ActionEnum;
 import controller.Controller;
 
-public class DialogShoppingCar extends JDialog{
+public class DialogShoppingCar extends JDialog {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel panelBase = new JPanel();
 	ArrayList<Integer> ids = new ArrayList<>();
 	ArrayList<PanelObjectShoppingCar> panels = new ArrayList<>();
-	
-	public DialogShoppingCar(Controller controller,MainWindow main) {
+
+	public DialogShoppingCar(Controller controller, MainWindow main) {
 		super(main);
 		setLayout(new GridBagLayout());
 		setSize(new Dimension(500, 600));
@@ -33,7 +33,7 @@ public class DialogShoppingCar extends JDialog{
 		c.fill = GridBagConstraints.BOTH;
 		c.weightx = 1;
 		c.weighty = 0.97;
-		add(scrol,c);
+		add(scrol, c);
 		c.gridx = 0;
 		c.gridy = 1;
 		c.fill = GridBagConstraints.BOTH;
@@ -44,11 +44,11 @@ public class DialogShoppingCar extends JDialog{
 		JButton btnBuy = new JButton(Constants.BUY_TEXT);
 		btnBuy.addActionListener(controller);
 		btnBuy.setActionCommand(ActionEnum.BUY.name());
-		panelBtnBuy.add(btnBuy,BorderLayout.CENTER);
+		panelBtnBuy.add(btnBuy, BorderLayout.CENTER);
 		add(panelBtnBuy, c);
 	}
-	
-	public void removeOfTheCar(int CarObjId){
+
+	public void removeOfTheCar(int CarObjId) {
 		for (PanelObjectShoppingCar panel : panels) {
 			if (panel.getId() == CarObjId) {
 				panels.remove(panel);
@@ -56,8 +56,8 @@ public class DialogShoppingCar extends JDialog{
 			}
 		}
 	}
-	
-	public void add(PanelObjectShoppingCar panel){
+
+	public void add(PanelObjectShoppingCar panel) {
 		panels.add(panel);
 		panelBase.setLayout(new GridLayout(panels.size(), 1));
 		for (PanelObjectShoppingCar panels : panels) {

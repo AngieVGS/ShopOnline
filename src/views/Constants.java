@@ -62,7 +62,7 @@ public class Constants {
 	public static final String IMAGE_PAPERS = "/img/Papers.png";
 	public static final String IMAGE_ADD_PRODUCT = "/img/addProduct.png";
 	public static final String PLOT_CHART_ICON_PATH = "/img/PlotChart.png";
-	
+
 	// values:**********************************************************************
 	public static final double INIT_VALUE_PRICE_PRODUCT_ADMIN = 50.0;
 	public static final double INIT_VALUE_SKIP_PRICE_PRODUCT_ADMIN = 50.0;

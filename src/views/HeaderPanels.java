@@ -13,7 +13,7 @@ import controller.ActionEnum;
 import controller.Controller;
 
 public class HeaderPanels extends JPanel {
-	
+
 	private static final long serialVersionUID = 1L;
 	private JButton btnChance;
 	private JTextField text;
@@ -88,11 +88,11 @@ public class HeaderPanels extends JPanel {
 		c.fill = GridBagConstraints.BOTH;
 		c.weightx = 0.1;
 		c.weighty = 1;
-		
+
 		btnChance = new JButton();
 		btnChance.setLayout(new BorderLayout());
-		PanelLogo logo = new  PanelLogo(Constants.CHANGE_USER_ADMINISTRATOR_LOGO);
-		btnChance.add(logo,BorderLayout.CENTER);
+		PanelLogo logo = new PanelLogo(Constants.CHANGE_USER_ADMINISTRATOR_LOGO);
+		btnChance.add(logo, BorderLayout.CENTER);
 		btnChance.setBackground(Color.decode(Constants.BACKGROUND_COLOR_MAIN));
 		btnChance.addActionListener(controller);
 		btnChance.setActionCommand(ActionEnum.CHANGE_MODE.name());

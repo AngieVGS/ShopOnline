@@ -35,12 +35,6 @@ public class DeatailsPanel extends JDialog {
 		lblName.setBorder(BorderFactory.createTitledBorder(Constants.NAME_TEXT));
 		panelInf.add(lblName);
 
-//		txtDetails = new JTextArea(product.getDescription());
-//		JScrollPane jScrollPane = new JScrollPane(txtDetails);
-//		jScrollPane.setBorder(BorderFactory.createTitledBorder(Constants.DETAILS_TEXT));
-//		panelInf.add(jScrollPane);
-
-
 		lblCategory = new JLabel(product.getCategory().toString());
 		lblCategory.setBorder(BorderFactory.createTitledBorder(Constants.CATEGORY_TEXT));
 		panelInf.add(lblCategory);

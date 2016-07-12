@@ -85,7 +85,8 @@ public class DialogAdd extends JDialog {
 		c.weightx = 1;
 		c.weighty = 0.05;
 		name = new JTextField();
-		name.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.GRAY), Constants.NAME_TEXT));
+		name.setBorder(
+				BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.GRAY), Constants.NAME_TEXT));
 		panel.add(name, c);
 
 		c.gridx = 0;
@@ -94,11 +95,13 @@ public class DialogAdd extends JDialog {
 		c.weightx = 1;
 		c.weighty = 0.05;
 		stock = new JSpinner();
-		stock.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.GRAY), Constants.STOCK_TEXT));
-		
+		stock.setBorder(
+				BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.GRAY), Constants.STOCK_TEXT));
+
 		percentageOfOProfit = new JTextField();
-		percentageOfOProfit.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.GRAY), "Percentage of profit"));
-		
+		percentageOfOProfit.setBorder(
+				BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.GRAY), "Percentage of profit"));
+
 		price = new JTextField();
 		price.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.GRAY), "Price"));
 		panel.add(price, c);
@@ -117,8 +120,8 @@ public class DialogAdd extends JDialog {
 		c.weightx = 1;
 		c.weighty = 0.05;
 		category = new JComboBox<>(Category.values());
-		categoryPanel
-				.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.GRAY), Constants.CATEGORY_TEXT));
+		categoryPanel.setBorder(
+				BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.GRAY), Constants.CATEGORY_TEXT));
 		categoryPanel.add(category);
 		categoryPanel.add(newCategory);
 		panel.add(categoryPanel, c);
@@ -173,10 +176,12 @@ public class DialogAdd extends JDialog {
 		this.name.setText("");
 		this.price.setText("");
 		this.stock.setValue(0);
-		name.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.GRAY), Constants.NAME_TEXT));
-		price
-				.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.GRAY), Constants.DESCRIPTION_TEXT));
-		stock.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.GRAY), Constants.STOCK_TEXT));
+		name.setBorder(
+				BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.GRAY), Constants.NAME_TEXT));
+		price.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.GRAY),
+				Constants.DESCRIPTION_TEXT));
+		stock.setBorder(
+				BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.GRAY), Constants.STOCK_TEXT));
 		try {
 			this.photo.chancePhotoByPath(Constants.NO_PRODUCT_SELECTED_IMG);
 		} catch (IOException e) {
@@ -186,18 +191,20 @@ public class DialogAdd extends JDialog {
 	}
 
 	public Product returnCreatedProduct() {
-		return new Product(name.getText(), Double.parseDouble(price.getText()), path, (int)stock.getValue(), (Category)category.getSelectedItem(), Double.parseDouble(percentageOfOProfit.getText()));
+		return new Product(name.getText(), Double.parseDouble(price.getText()), path, (int) stock.getValue(),
+				(Category) category.getSelectedItem(), Double.parseDouble(percentageOfOProfit.getText()));
 	}
 
 	public boolean verifyIfThereIsNoErrors() {
 		boolean therisNoErrors = false;
 		if (name.getText().equals("")) {
-			name.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.RED), Constants.NAME_TEXT));
+			name.setBorder(
+					BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.RED), Constants.NAME_TEXT));
 		} else if (price.getText().equals("")) {
-			price.setBorder(
-					BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.RED), "Price"));
+			price.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.RED), "Price"));
 		} else if ((int) stock.getValue() == 0) {
-			stock.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.RED),  Constants.STOCK_TEXT));
+			stock.setBorder(
+					BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.RED), Constants.STOCK_TEXT));
 		} else if (path.equals(null)) {
 			photo.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
 		} else {

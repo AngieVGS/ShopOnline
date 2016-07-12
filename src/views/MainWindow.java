@@ -18,7 +18,6 @@ public class MainWindow extends JFrame {
 	private JPanel mainPanel;
 	private JPanel panelPage;
 	HeaderPanels headerPanel;
-//	private JPanel lateralPanel;
 
 	public MainWindow(Controller controller) {
 		UI();
@@ -31,10 +30,6 @@ public class MainWindow extends JFrame {
 		// *****************headerPanel*****************************************************
 		headerPanel = new HeaderPanels(controller);
 		add(headerPanel, BorderLayout.PAGE_START);
-		// *****************lateral panel****************************************************
-//		lateralPanel = new PanelFilter(controller);
-//		lateralPanel.setPreferredSize(new Dimension(Constants.SCREEN_WIDTH/4,Constants.SCREEN_HEIGHT));
-//		add(lateralPanel, BorderLayout.LINE_START);
 
 		mainPanel = new AdminPanel(controller);
 		add(mainPanel, BorderLayout.CENTER);

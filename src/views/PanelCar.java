@@ -7,7 +7,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 public class PanelCar extends JPanel {
-	
+
 	private static final long serialVersionUID = 1L;
 	private Image image;
 	private static int stocks;
@@ -23,7 +23,7 @@ public class PanelCar extends JPanel {
 		super.paintComponent(g);
 
 		g.setColor(Color.darkGray);
-		g.drawImage(image, (getWidth()/2)-25, 5, 50,50, null);
+		g.drawImage(image, (getWidth() / 2) - 25, 5, 50, 50, null);
 		int x = 20;
 		if (stocks > 9) {
 			x += 5;

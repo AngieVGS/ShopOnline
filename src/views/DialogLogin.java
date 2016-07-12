@@ -28,7 +28,7 @@ public class DialogLogin extends JDialog {
 		setSize(750, 700);
 		setLocationRelativeTo(null);
 		setLayout(new GridLayout(1, 3));
-		
+
 		JPanel panel1 = new JPanel();
 		panel1.setBackground(Color.WHITE);
 		add(panel1);
@@ -60,32 +60,32 @@ public class DialogLogin extends JDialog {
 		JPanel panelbuttons = new JPanel();
 		panelbuttons.setLayout(new GridLayout(1, 2));
 		panelbuttons.setBorder(BorderFactory.createLineBorder(Color.WHITE, 3));
-		
+
 		btnLogin = new JButton("Login");
 		btnLogin.addActionListener(controller);
 		btnLogin.setActionCommand(ActionEnum.LOGIN.name());
 		btnLogin.setBorder(BorderFactory.createLineBorder(Color.WHITE, 1));
 		panelbuttons.add(btnLogin);
-		
+
 		btnRegister = new JButton("Register");
 		btnRegister.addActionListener(controller);
 		btnRegister.setActionCommand(ActionEnum.REGISTER.name());
 		btnRegister.setBorder(BorderFactory.createLineBorder(Color.WHITE, 1));
 		panelbuttons.add(btnRegister);
-		
+
 		panelTexts.add(panelbuttons);
 		panel2.add(panelTexts);
 		JPanel panelXample2 = new JPanel();
 		labelError = new JLabel();
 		panelXample2.setLayout(new BorderLayout());
 		panelXample2.add(labelError, BorderLayout.CENTER);
-		
+
 		adminOrUser = new JButton("Administrator, wanna change to user?");
 		adminOrUser.addActionListener(controller);
 		adminOrUser.setActionCommand(ActionEnum.BUTTON_CHANGE_BETWEEN_USER_AND_ADMIN.name());
-//		adminOrUser.setBackground(Color.WHITE);
+		// adminOrUser.setBackground(Color.WHITE);
 		adminOrUser.setBorder(BorderFactory.createLineBorder(Color.WHITE, 4));
-		
+
 		panelXample2.add(adminOrUser, BorderLayout.PAGE_START);
 		panelXample2.setBackground(Color.WHITE);
 		panel2.add(panelXample2);
@@ -96,22 +96,22 @@ public class DialogLogin extends JDialog {
 		setVisible(true);
 	}
 
-	public void changeMode(){
+	public void changeMode() {
 		if (adminOrUser.getText().equals("Administrator, wanna change to user?")) {
 			adminOrUser.setText("User, wanna change to administrator?");
-		}else{
+		} else {
 			adminOrUser.setText("Administrator, wanna change to user?");
 		}
 	}
-	
-	public boolean adminOrUser(){
+
+	public boolean adminOrUser() {
 		if (adminOrUser.getText().equals("Administrator, wanna change to user?")) {
 			return true;
-		}else{
+		} else {
 			return false;
 		}
 	}
-	
+
 	public void aminateInvalidUser() {
 		userName.setBorder(BorderFactory.createLineBorder(Color.RED));
 		labelError.setText("              The user field is empty");
@@ -122,18 +122,18 @@ public class DialogLogin extends JDialog {
 		labelError.setText("           The Password field is empty");
 	}
 
-	public void animateIncorrectUserOrPassword(){
+	public void animateIncorrectUserOrPassword() {
 		cleanToErrors();
 		labelError.setText("         User or password are incorrect");
 	}
-	
+
 	public void cleanToErrors() {
 		userName.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		pasword.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		labelError.setText("");
 	}
-	
-	public void clean(){
+
+	public void clean() {
 		userName.setText("");
 		pasword.setText("");
 	}
@@ -141,7 +141,7 @@ public class DialogLogin extends JDialog {
 	public String getUser() {
 		return userName.getText();
 	}
-		
+
 	@SuppressWarnings("deprecation")
 	public String getEnteredPassword() {
 		return pasword.getText();

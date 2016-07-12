@@ -27,66 +27,51 @@ public class PanelPointsGraphic extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private ArrayList<Purchase> purchases;
 	public static final int MINUTES_PER_HOUR = 60;
-	
+
 	public PanelPointsGraphic(ArrayList<Purchase> purchase) {
 		setLayout(new BorderLayout());
 		setLocationRelativeTo(null);
 		setSize(700, 300);
 		setTitle("Plot Chart");
 		setIconImage(new ImageIcon(getClass().getResource(Constants.PLOT_CHART_ICON_PATH)).getImage());
-		
+
 		purchases = purchase;
-		/*
-		 * se crea el chart
-		 */
 		XYDataset xydataset = XYDataset();
-		JFreeChart jfreechart = ChartFactory.createXYLineChart("Purchases per minute" , "Minute", "Purchases", xydataset, PlotOrientation.VERTICAL,  true, true, false);
-		
-		/*
-		 * se modifican los circulos y las lineas
-		 */
+		JFreeChart jfreechart = ChartFactory.createXYLineChart("Purchases per minute", "Minute", "Purchases", xydataset,
+				PlotOrientation.VERTICAL, true, true, false);
+
 		XYPlot xyplot = (XYPlot) jfreechart.getPlot();
 		xyplot.setBackgroundPaint(Color.WHITE);
 		xyplot.setDomainGridlinePaint(Color.BLACK);
-		xyplot.setRangeGridlinePaint(Color.BLACK); 
-		
+		xyplot.setRangeGridlinePaint(Color.BLACK);
+
 		XYLineAndShapeRenderer xylineandshaperenderer = (XYLineAndShapeRenderer) xyplot.getRenderer();
 		xylineandshaperenderer.setBaseShapesVisible(true);
-		
+
 		XYItemLabelGenerator xy = new StandardXYItemLabelGenerator();
 		xylineandshaperenderer.setBaseItemLabelGenerator(xy);
 		xylineandshaperenderer.setBaseItemLabelsVisible(true);
 		xylineandshaperenderer.setBaseLinesVisible(true);
-		xylineandshaperenderer.setBaseItemLabelsVisible(true);    
-		
-		
-		/*
-		 *  se pone el chart (grafico) en un panel
-		 */
+		xylineandshaperenderer.setBaseItemLabelsVisible(true);
+
 		ChartPanel chartPanel = new ChartPanel(jfreechart);
-		/*
-		 * se deja el tamaño por defecto
-		 */
 		chartPanel.setPreferredSize(new java.awt.Dimension(500, 270));
-		/*
-		 *  se añade a la aplicacion
-		 */
 		setContentPane(chartPanel);
-	
+
 		setVisible(true);
 	}
 
 	@SuppressWarnings("static-access")
-	private int calculatePurchasesPerMinute(int minute){
+	private int calculatePurchasesPerMinute(int minute) {
 		int purchasesOnThisMinute = 0;
-		for (Purchase purchase: purchases) {
+		for (Purchase purchase : purchases) {
 			if (purchase.getDate().MINUTE == minute) {
 				purchasesOnThisMinute++;
 			}
 		}
 		return purchasesOnThisMinute;
 	}
-	
+
 	private XYDataset XYDataset() {
 		int minute = 1;
 		XYSeries sPurchases = new XYSeries("Purchases");
@@ -95,9 +80,8 @@ public class PanelPointsGraphic extends JFrame {
 			sPurchases.add(minute, purchases);
 			minute++;
 		}
-		XYSeriesCollection xyseriescollection =  new XYSeriesCollection();
-		xyseriescollection.addSeries(sPurchases);             
-
+		XYSeriesCollection xyseriescollection = new XYSeriesCollection();
+		xyseriescollection.addSeries(sPurchases);
 		return xyseriescollection;
 	}
 }

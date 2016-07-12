@@ -22,10 +22,11 @@ public class PanelPhoto extends JPanel {
 		int x = getWidth() - 20;
 		int y = getHeight() - 20;
 		int dimension = (x > y) ? y : x;
-		g.drawImage(image, (getWidth() / 2) - (dimension / 2), (getHeight() / 2) - (dimension / 2), dimension,dimension, this);
+		g.drawImage(image, (getWidth() / 2) - (dimension / 2), (getHeight() / 2) - (dimension / 2), dimension,
+				dimension, this);
 	}
-	
-	public static String getBasicSrc(){
+
+	public static String getBasicSrc() {
 		return Constants.BASIC_SRC;
 	}
 

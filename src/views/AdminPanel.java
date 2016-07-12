@@ -88,8 +88,8 @@ public class AdminPanel extends JPanel {
 		btnView.setActionCommand(ActionEnum.VIEW_PRODUCT.name());
 		btnView.setPreferredSize(dim);
 		panelx.add(btnView);
-		
-		btnSatsistics = new JButton(Constants. BTN_STATISTICS_NAME);
+
+		btnSatsistics = new JButton(Constants.BTN_STATISTICS_NAME);
 		btnSatsistics.setForeground(Color.decode(Constants.COLOR_FONT_BUTTON));
 		btnSatsistics.setBackground(Color.decode(Constants.COLOR_BUTTON));
 		btnSatsistics.setBorder(null);
@@ -153,7 +153,7 @@ public class AdminPanel extends JPanel {
 		model.addRow(ob);
 	}
 
-	public void deleteProduct(){
+	public void deleteProduct() {
 		if (tableObj.getSelectedRow() != -1) {
 			model.removeRow(tableObj.getSelectedRow());
 		}

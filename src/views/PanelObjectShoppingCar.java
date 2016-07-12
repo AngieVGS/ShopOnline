@@ -24,7 +24,7 @@ public class PanelObjectShoppingCar extends JPanel {
 	private JButton removeOfTheCar;
 	private JLabel price;
 
-	public PanelObjectShoppingCar(Product product, Controller controller){
+	public PanelObjectShoppingCar(Product product, Controller controller) {
 		setBackground(Color.decode(Constants.BACKGROUND_COLOR_MAIN));
 		Product prod = product;
 		this.img = new PanelLogo(prod.getImagePath().substring(1));

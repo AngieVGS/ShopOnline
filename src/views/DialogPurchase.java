@@ -50,7 +50,7 @@ public class DialogPurchase extends JDialog {
 		try {
 			panel.removeAll();
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 
 	}
