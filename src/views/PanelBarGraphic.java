@@ -5,7 +5,9 @@ import java.awt.Graphics;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
+
 import javax.swing.JPanel;
+
 import models.entity.Purchase;
 
 public class PanelBarGraphic extends JPanel {

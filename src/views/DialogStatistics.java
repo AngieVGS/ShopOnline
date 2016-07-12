@@ -14,9 +14,9 @@ public class DialogStatistics extends JDialog {
 	
 	public DialogStatistics(ArrayList<Purchase> purchases) {
 		setLayout(new BorderLayout());
-		JTabbedPane pestañas = new JTabbedPane();
+		JTabbedPane laps = new JTabbedPane();
 		PanelBarGraphic lineGraphic = new PanelBarGraphic(purchases);
-		pestañas.add("Lines graphic", lineGraphic);
-		add(pestañas,BorderLayout.CENTER);
+		laps.add("Lines graphic", lineGraphic);
+		add(laps,BorderLayout.CENTER);
 	}
 }
