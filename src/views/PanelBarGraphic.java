@@ -50,7 +50,7 @@ public class PanelBarGraphic extends JPanel {
 		int sales = 0;
 		
 		for (Purchase purchase: purch){			
-			if (day == 11 &&  hour == 11) {// cambiar los numeros quemados por datos del  purchase
+			if (day == 12 &&  hour == 11) {// cambiar los numeros quemados por datos del  purchase el 12 es el dia  CAMBIAR
 				sales++;
 				System.out.println("ja ja ja j xd");
 			}
@@ -60,12 +60,12 @@ public class PanelBarGraphic extends JPanel {
 	}
 	
 	public int NumberPurchasesToday(){
-		ArrayList<Purchase> aux = new ArrayList<>();
 		
+		ArrayList<Purchase> aux = new ArrayList<>();		
 		for (Purchase purchase: purch) {
 			System.out.println("****"+purchase.getDate().DATE);
 			System.out.println((new GregorianCalendar().get(GregorianCalendar.DAY_OF_MONTH)));
-			if (11 == (new GregorianCalendar().get(GregorianCalendar.DAY_OF_MONTH)) ) {
+			if (12 == (new GregorianCalendar().get(GregorianCalendar.DAY_OF_MONTH)) ) {// el 12 quemado es el dia  CAMBIAR
 				aux.add(purchase);
 			}
 		}
