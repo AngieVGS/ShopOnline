@@ -19,11 +19,11 @@ import javax.swing.JTable.PrintMode;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 
-import persistence.ManagerPersistence;
 import controller.ActionEnum;
 import controller.Controller;
 import models.entity.Category;
 import models.entity.Product;
+import persistence.ManagerPersistence;
 
 public class PanelTabla extends JPanel {
 
@@ -31,14 +31,14 @@ public class PanelTabla extends JPanel {
 
 	private TableToolbar tableToolBar;
 	private ToolBarMain toolBarMain;
-	
+
 	private JTable table;
-	public static final String[] titlesTable = {"ID", "NAME", "PRICE", "QUANTUM AVAILABLE", "CATEGORY", "DISCONT"};
+	public static final String[] titlesTable = { "ID", "NAME", "PRICE", "QUANTUM AVAILABLE", "CATEGORY", "DISCONT" };
 	private DefaultTableModel defaultTableModel;
 	private JButton buttonRemoveProduct;
 	private JButton buttonEditProduct;
 	private JButton buttonBioProduct;
-	
+
 	private JButton buttonLastBack;
 	private JButton buttonBack;
 	private JButton buttonNext;
@@ -56,7 +56,7 @@ public class PanelTabla extends JPanel {
 
 		JPanel panelTable = new JPanel(new BorderLayout());
 		panelTable.setBorder(BorderFactory.createLineBorder(Color.white));
-		
+
 		table = new JTable();
 		table.setShowGrid(!true);
 		table.setOpaque(!true);
@@ -64,48 +64,48 @@ public class PanelTabla extends JPanel {
 		table.setSelectionBackground(Constants.COLOR_BACKGROUND_SELECTION_TABLE);
 		table.setGridColor(Color.GREEN);
 		table.setGridColor(Color.BLACK);
-//		table.setFont(Constants.FONT_TABLE);
+		// table.setFont(Constants.FONT_TABLE);
 		panelTable.add(new JScrollPane(table));
-		
+
 		addPanelControl(controller);
-		
+
 		assignColorDissableBack();
 
 		modificateTabla(controller);
-		
+
 		defaultTableModel.setColumnIdentifiers(titlesTable);
 		defaultTableModel.addColumn("#");
 		defaultTableModel.addColumn("Remove");
 		defaultTableModel.addColumn("Edit");
 		defaultTableModel.addColumn("Review");
-		
+
 		table.moveColumn(6, 0);
-		
+
 		buttonRemoveProduct = new JButton("Remove");
 		buttonRemoveProduct.setToolTipText("Delete this product");
 		buttonRemoveProduct.addActionListener(controller);
 		buttonRemoveProduct.setBackground(Color.RED);
 		buttonRemoveProduct.setBorderPainted(false);
-//		buttonRemoveProduct.setFont(Constants.FONT_TABLE);
+		// buttonRemoveProduct.setFont(Constants.FONT_TABLE);
 		buttonRemoveProduct.setForeground(Color.WHITE);
-		
+
 		buttonEditProduct = new JButton("Edit");
-//		buttonEditProduct.setFont(Constants.FONT_TABLE);
+		// buttonEditProduct.setFont(Constants.FONT_TABLE);
 		buttonEditProduct.setToolTipText("Edit this product");
 		buttonEditProduct.addActionListener(controller);
 		buttonEditProduct.setBackground(Color.decode("#00A33D"));
 		buttonEditProduct.setForeground(Color.WHITE);
-		
+
 		buttonBioProduct = new JButton("Preview");
-//		buttonBioProduct.setFont(Constants.FONT_TABLE);
+		// buttonBioProduct.setFont(Constants.FONT_TABLE);
 		buttonBioProduct.setToolTipText("Show Bio of this product");
 		buttonBioProduct.addActionListener(controller);
 		buttonBioProduct.setBackground(Color.BLUE);
 		buttonBioProduct.setForeground(Color.WHITE);
-		
+
 		toolBarMain = new ToolBarMain(controller);
 		add(toolBarMain, BorderLayout.LINE_START);
-		
+
 		add(panelTable, BorderLayout.CENTER);
 	}
 
@@ -113,7 +113,8 @@ public class PanelTabla extends JPanel {
 		String[] columnas = new String[] {};
 
 		@SuppressWarnings("rawtypes")
-		final Class[] tiposColumnas = new Class[] { Object.class, String.class, Object.class, Object.class, Category.class, Object.class, String.class, JButton.class, JButton.class, JButton.class };
+		final Class[] tiposColumnas = new Class[] { Object.class, String.class, Object.class, Object.class,
+				Category.class, Object.class, String.class, JButton.class, JButton.class, JButton.class };
 
 		Object[][] datos = new Object[][] {};
 
@@ -136,7 +137,8 @@ public class PanelTabla extends JPanel {
 
 		table.setDefaultRenderer(JButton.class, new TableCellRenderer() {
 			@Override
-			public Component getTableCellRendererComponent(JTable jtable, Object objeto, boolean isSelected, boolean hasFocus, int row, int column) {
+			public Component getTableCellRendererComponent(JTable jtable, Object objeto, boolean isSelected,
+					boolean hasFocus, int row, int column) {
 				return (Component) objeto;
 			}
 		});
@@ -154,9 +156,9 @@ public class PanelTabla extends JPanel {
 		buttonLastBack.addActionListener(controller);
 		buttonLastBack.setBorderPainted(false);
 		buttonLastBack.setFocusPainted(false);
-//		buttonLastBack.setActionCommand(Action.BUTTON_LAST_PAGE_BACK.name());
+		// buttonLastBack.setActionCommand(Action.BUTTON_LAST_PAGE_BACK.name());
 		buttonLastBack.setEnabled(false);
-		
+
 		panelControl.add(buttonBack = new JButton("<"));
 		buttonBack.setBackground(Constants.COLOR_GREEN_GENERAL);
 		buttonBack.setForeground(Color.WHITE);
@@ -164,7 +166,7 @@ public class PanelTabla extends JPanel {
 		buttonBack.addActionListener(controller);
 		buttonBack.setBorderPainted(false);
 		buttonBack.setFocusPainted(false);
-//		buttonBack.setActionCommand(Action.BUTTON_PAGE_BACK.name());
+		// buttonBack.setActionCommand(Action.BUTTON_PAGE_BACK.name());
 		buttonBack.setEnabled(false);
 
 		panelControl.add(labelCountPage = new JLabel("0/0"));
@@ -176,7 +178,7 @@ public class PanelTabla extends JPanel {
 		buttonNext.addActionListener(controller);
 		buttonNext.setBorderPainted(false);
 		buttonNext.setFocusPainted(false);
-//		buttonNext.setActionCommand(Action.BUTTON_PAGE_NEXT.name());
+		// buttonNext.setActionCommand(Action.BUTTON_PAGE_NEXT.name());
 
 		panelControl.add(buttonLastNext = new JButton(">>"));
 		buttonLastNext.setBackground(Constants.COLOR_BLUE_GENERAL);
@@ -185,7 +187,7 @@ public class PanelTabla extends JPanel {
 		buttonLastNext.addActionListener(controller);
 		buttonLastNext.setBorderPainted(false);
 		buttonLastNext.setFocusPainted(false);
-//		buttonLastNext.setActionCommand(Action.BUTTON_LAST_PAGE_NEXT.name());
+		// buttonLastNext.setActionCommand(Action.BUTTON_LAST_PAGE_NEXT.name());
 
 		panelControl.setOpaque(false);
 		add(panelControl, BorderLayout.PAGE_END);
@@ -288,19 +290,20 @@ public class PanelTabla extends JPanel {
 
 	public void updateTable(ArrayList<Product> listProducts, Point point) {
 		defaultTableModel.setRowCount(0);
-		for (int i = (int) point.getX(), j = 0; i < (int) point.getY() && j < ((int) point.getY() - (int) point.getX()); i++, j++) {
+		for (int i = (int) point.getX(), j = 0; i < (int) point.getY()
+				&& j < ((int) point.getY() - (int) point.getX()); i++, j++) {
 			addProductToTable(listProducts.get(i));
 			int numberForPage = Integer.parseInt(ManagerPersistence.readProperty("numberDataForPage"));
 			defaultTableModel.setValueAt(((getNumberPageCurrent() * numberForPage) + j) - (numberForPage - 1), j, 6);
-//			buttonRemoveProduct.setActionCommand(Action.BUTTON_REMOVE_PRODUCT.name());
+			// buttonRemoveProduct.setActionCommand(Action.BUTTON_REMOVE_PRODUCT.name());
 			defaultTableModel.setValueAt(buttonRemoveProduct, j, 7);
-//			buttonEditProduct.setActionCommand(Action.BUTTON_EDIT_PRODUCT.name());
+			// buttonEditProduct.setActionCommand(Action.BUTTON_EDIT_PRODUCT.name());
 			defaultTableModel.setValueAt(buttonEditProduct, j, 8);
-//			buttonBioProduct.setActionCommand(Action.BUTTON_BIO_PRODUCT.name());
+			// buttonBioProduct.setActionCommand(Action.BUTTON_BIO_PRODUCT.name());
 			defaultTableModel.setValueAt(buttonBioProduct, j, 9);
 		}
 	}
-	
+
 	public void updateTable(ArrayList<Product> listProducts) {
 		defaultTableModel.setRowCount(0);
 		for (int i = 0; i < listProducts.size(); i++) {
@@ -315,7 +318,7 @@ public class PanelTabla extends JPanel {
 			defaultTableModel.setValueAt(buttonBioProduct, i, 9);
 		}
 	}
-	
+
 	public Object[] getListValuesForFilter() {
 		return tableToolBar.getListValuesForFilter();
 	}
@@ -349,12 +352,12 @@ public class PanelTabla extends JPanel {
 	public void setNumberPages(int maxNumberPages) {
 		labelCountPage.setText(numberPageCurrent + "/" + maxNumberPages);
 	}
-	
-	public void print(){
+
+	public void print() {
 		try {
-			 MessageFormat headerFormat = new MessageFormat("");
-			 MessageFormat footerFormat = new MessageFormat("- P�gina {0} -");
-             table.print(PrintMode.FIT_WIDTH, headerFormat, footerFormat);
+			MessageFormat headerFormat = new MessageFormat("");
+			MessageFormat footerFormat = new MessageFormat("- P�gina {0} -");
+			table.print(PrintMode.FIT_WIDTH, headerFormat, footerFormat);
 		} catch (PrinterException e) {
 			e.printStackTrace();
 		}
@@ -364,9 +367,18 @@ public class PanelTabla extends JPanel {
 		try {
 			MessageFormat headerFormat = new MessageFormat("");
 			MessageFormat footerFormat = new MessageFormat("- P�gina {0} -");
-            table.print(PrintMode.FIT_WIDTH, headerFormat, footerFormat);
+			table.print(PrintMode.FIT_WIDTH, headerFormat, footerFormat);
 		} catch (PrinterException e) {
 			e.printStackTrace();
 		}
 	}
+
+	public void disableTable() {
+		table.setVisible(false);
+	}
+
+	public void avalibleTable() {
+		table.setVisible(true);
+	}
+
 }

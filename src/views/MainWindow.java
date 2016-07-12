@@ -37,10 +37,11 @@ public class MainWindow extends JFrame {
 		mainPanel = new AdminPanel(controller);
 		add(mainPanel, BorderLayout.CENTER);
 
-		// *****************panel page****************************************************
+		// *****************panel
+		// page****************************************************
 		panelPage = new JPanel();
 		add(panelPage, BorderLayout.PAGE_END);
-//		setVisible(true);
+		// setVisible(true);
 	}
 
 	public void switchBetweenAdminAndUserView(boolean admin) {
@@ -83,7 +84,7 @@ public class MainWindow extends JFrame {
 		return ((AdminPanel) mainPanel).returnTheSelectedId();
 	}
 
-	public void removeProductOfTheTable(){
+	public void removeProductOfTheTable() {
 		((AdminPanel) mainPanel).deleteProduct();
 	}
 
@@ -116,13 +117,14 @@ public class MainWindow extends JFrame {
 	public void resetItemsOnCar() {
 		headerPanel.reset();
 	}
-	
+
 	public int getNumberRowSelect() {
 		return ((AdminPanel) mainPanel).getNumberRowSelect();
 	}
 
 	public void getMessageErrorPrice() {
-		JOptionPane.showMessageDialog(this, "The first price can not be higher than second", "Error Price Filter", JOptionPane.WARNING_MESSAGE);
+		JOptionPane.showMessageDialog(this, "The first price can not be higher than second", "Error Price Filter",
+				JOptionPane.WARNING_MESSAGE);
 	}
 
 	public Object[] getListValuesForFilter() {
@@ -131,5 +133,13 @@ public class MainWindow extends JFrame {
 
 	public void printTable() {
 		((AdminPanel) mainPanel).printTable();
+	}
+
+	public void disableTable() {
+		((AdminPanel) mainPanel).disableTable();
+	}
+
+	public void avalibleTable() {
+		((AdminPanel) mainPanel).avalibleTable();
 	}
 }

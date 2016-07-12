@@ -186,4 +186,12 @@ public class AdminPanel extends JPanel {
 	public void printTable() {
 		panelTabla.printTable();
 	}
+
+	public void disableTable() {
+		panelTabla.disableTable();
+	}
+
+	public void avalibleTable() {
+		panelTabla.avalibleTable();
+	}
 }
