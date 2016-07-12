@@ -25,6 +25,7 @@ import views.DialogShoppingCar;
 import views.DialogStatistics;
 import views.MainWindow;
 import views.PanelObjectShoppingCar;
+import views.PanelPointsGraphic;
 
 public class Controller implements ActionListener {
 	Shop shop;
@@ -38,6 +39,7 @@ public class Controller implements ActionListener {
 	public static int PAGE_PURCHASE = 0;
 	public static int PAGE_MAX_PURCHASE = 0;
 	DialogPurchase dialogPurchase;
+	PanelPointsGraphic panelPointsGraphic;
 
 	public Controller() {
 		page = 0;
@@ -138,10 +140,12 @@ public class Controller implements ActionListener {
 
 	private void showStatistics() {		
 		try {
-			statistics = new DialogStatistics(ManagerPersistence.purchases());
+			ArrayList<Purchase> purchases = ManagerPersistence.purchases();
+			statistics = new DialogStatistics(purchases);
 			statistics.setSize(700,400);
 			statistics.setTitle("Statistics");
-			statistics.setVisible(true);			
+			statistics.setVisible(true);
+			panelPointsGraphic = new PanelPointsGraphic(purchases);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

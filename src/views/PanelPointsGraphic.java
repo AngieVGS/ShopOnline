@@ -32,6 +32,7 @@ public class PanelPointsGraphic extends JFrame {
 		setLayout(new BorderLayout());
 		setLocationRelativeTo(null);
 		setSize(700, 300);
+		setTitle("Plot Chart");
 		setIconImage(new ImageIcon(getClass().getResource(Constants.PLOT_CHART_ICON_PATH)).getImage());
 		
 		purchases = purchase;
@@ -97,7 +98,6 @@ public class PanelPointsGraphic extends JFrame {
 			sPurchases.add(minute, purchases);
 			minute++;
 		}
-		sPurchases.add(3,2);
 		XYSeriesCollection xyseriescollection =  new XYSeriesCollection();
 		xyseriescollection.addSeries(sPurchases);             
 
