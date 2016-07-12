@@ -6,6 +6,7 @@ import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.util.ArrayList;
+
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -13,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
 import controller.ActionEnum;
 import controller.Controller;
 import models.entity.Product;
@@ -60,7 +62,7 @@ public class AdminPanel extends JPanel {
 		btnadd.setActionCommand(ActionEnum.SHOW_CREATE_DIALOG.name());
 		Dimension dim = new Dimension(70, 30);
 		btnadd.setPreferredSize(dim);
-		panelx.add(btnadd);
+		// panelx.add(btnadd);
 		panelx.setBackground(Color.white);
 
 		btnEdit = new JButton(Constants.EDIT_TEXT);
@@ -70,7 +72,7 @@ public class AdminPanel extends JPanel {
 		btnEdit.addActionListener(controller);
 		btnEdit.setActionCommand(ActionEnum.EDIT_PRODUCT.name());
 		btnEdit.setPreferredSize(dim);
-		panelx.add(btnEdit);
+		// panelx.add(btnEdit);
 
 		btnDelete = new JButton(Constants.DELETE_TEXT);
 		btnDelete.setForeground(Color.decode(Constants.COLOR_FONT_BUTTON));
@@ -79,7 +81,7 @@ public class AdminPanel extends JPanel {
 		btnDelete.addActionListener(controller);
 		btnDelete.setActionCommand(ActionEnum.DELETE_PRODUCT.name());
 		btnDelete.setPreferredSize(dim);
-		panelx.add(btnDelete);
+		// panelx.add(btnDelete);
 
 		btnView = new JButton(Constants.VIEW_TEXT);
 		btnView.setForeground(Color.decode(Constants.COLOR_FONT_BUTTON));
@@ -88,7 +90,7 @@ public class AdminPanel extends JPanel {
 		btnView.addActionListener(controller);
 		btnView.setActionCommand(ActionEnum.VIEW_PRODUCT.name());
 		btnView.setPreferredSize(dim);
-		panelx.add(btnView);
+		// panelx.add(btnView);
 
 		btnSatsistics = new JButton(Constants.BTN_STATISTICS_NAME);
 		btnSatsistics.setForeground(Color.decode(Constants.COLOR_FONT_BUTTON));
@@ -166,13 +168,13 @@ public class AdminPanel extends JPanel {
 	}
 
 	public void revalidateTableWithSpecificItems(ArrayList<Product> listProducts) {
-//		deleteAllValuesofTheTable();
-//		for (int i = 0; i < products.size(); i++) {
-//			addProduct(products.get(i));
-//		}
+		// deleteAllValuesofTheTable();
+		// for (int i = 0; i < products.size(); i++) {
+		// addProduct(products.get(i));
+		// }
 		panelTabla.updateTable(listProducts);
 	}
-	
+
 	public int getNumberRowSelect() {
 		return panelTabla.getNumberRowSelect();
 	}
@@ -180,7 +182,7 @@ public class AdminPanel extends JPanel {
 	public Object[] getListValuesForFilter() {
 		return panelTabla.getListValuesForFilter();
 	}
-	
+
 	public void printTable() {
 		panelTabla.printTable();
 	}
