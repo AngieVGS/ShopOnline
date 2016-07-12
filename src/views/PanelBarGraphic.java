@@ -63,7 +63,6 @@ public class PanelBarGraphic extends JPanel {
 			if (day == LocalDateTime.now().getDayOfMonth() && hour == LocalDateTime.now().getHour()) {
 				sales++;
 			}
-			System.out.println("" + sales);
 		}
 		return sales;
 	}
